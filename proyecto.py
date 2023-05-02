@@ -57,6 +57,8 @@ sqft = float(input("Metros cuadrados: "))
 num_rooms = int(input("Número de cuartos: "))
 num_bathrooms = float(input("Número de baños completos: "))
 
+#Input prueba
+
 input_data = [[num_rooms, sqft, num_bathrooms]]
 
 # Modelo 1 - Predicciones
