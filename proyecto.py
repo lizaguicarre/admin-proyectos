@@ -61,7 +61,31 @@ nn_score = np.sqrt(nn_mse) #RMSE
 # ------------------------------------------------------------------------------------------------------------
 # Modelo 2
 # ------------------------------------------------------------------------------------------------------------
-# Modelo 3
+# Decision Tree Model
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
+import math
+
+#  Modelo
+dt_model = DecisionTreeClassifier(max_depth=3, min_samples_split=7, min_samples_leaf=8, max_features=8)
+
+# Entrenando modelo
+dt_model.fit(train_inputs, train_outputs)
+
+# Creando prediciones
+dt_pred = dt_model.predict(test_inputs)
+
+# Evaluate the model
+from sklearn.metrics import accuracy_score
+#accuracy = accuracy_score(test_outputs, dt_pred)
+
+rmse = math.sqrt(mean_squared_error(test_outputs, dt_pred))
+print("RMSE:", rmse)
+print("Accuracy:", accuracy)
+
+#Modelo Joshua
 # ------------------------------------------------------------------------------------------------------------
 # Random Forest model
 rf_model = RandomForestRegressor(random_state=42)
@@ -99,6 +123,8 @@ input_data = [[num_rooms, sqft, num_bathrooms]]
 nn_price = nn_model.predict(input_data)
 # Modelo 2 - Predicciones
 # Modelo 3 - Predicciones
+dt_price = dt_pred.predict(input_data)
+
 # Random Forest - Predicciones
 rf_price = best_rf_model.predict(input_data)
 
